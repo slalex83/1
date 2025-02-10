@@ -1,0 +1,73 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden !important;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body.is-hidden {
+  overflow: hidden;
+
+  @media (1280px<=width) {
+    overflow-y: scroll;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(18, 20, 23, 0.1);
+  border-radius: 20px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.section {
+  padding: 40px 0;
+
+  @media (1280px<=width) {
+    padding: 80px 0;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 16px;
+
+  @media (360px <= width) {
+    max-width: 360px;
+  }
+
+  @media (768px<=width) {
+    max-width: 768px;
+  }
+
+  @media (1280px<=width) {
+    max-width: 1280px;
+    padding: 0 100px;
+  }
+}
