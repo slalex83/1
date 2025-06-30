@@ -1791,5 +1791,33 @@
       type="module"
       src="https://kwiga.com/build/js/kwiga-widget.js?t=1723656117000&uuid=97a504e3-49f4-47d3-a7e9-61b2a4333889&is_modal=true&producer=https://kwiga.com/"
     ></script>
+    <script>
+  function initModalButtons() {
+    const buttons = document.querySelectorAll('[data-modal="open"]');
+    const modal = document.querySelector(".popup");
+
+    if (buttons.length && modal) {
+      buttons.forEach((btn) => {
+        if (!btn.dataset.listenerAdded) {
+          btn.addEventListener("click", () => {
+            modal.classList.add("active");
+          });
+          btn.dataset.listenerAdded = "true";
+        }
+      });
+    }
+  }
+
+  // Ініціалізуємо після завантаження DOM
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initModalButtons);
+  } else {
+    initModalButtons();
+  }
+
+  // Страховка на випадок пізнього рендеру
+  setTimeout(initModalButtons, 1000);
+</script>
+
   </body>
 </html>
