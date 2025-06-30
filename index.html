@@ -39,8 +39,24 @@
     </script>
     <!-- End Meta Pixel Code -->
 <style>
-  .widget-timer {
-    pointer-events: none !important;
+  .modal {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .modal--active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 </style>
 
@@ -1797,47 +1813,6 @@
       type="module"
       src="https://kwiga.com/build/js/kwiga-widget.js?t=1723656117000&uuid=97a504e3-49f4-47d3-a7e9-61b2a4333889&is_modal=true&producer=https://kwiga.com/"
     ></script>
-<script>
-  function setupModal() {
-    const openButtons = document.querySelectorAll('[data-modal="open"]');
-    const modal = document.querySelector('.popup');
-    const closeButton = modal?.querySelector('.popup-close');
-
-    if (!modal) return;
-
-    openButtons.forEach((btn) => {
-      if (!btn.dataset.listenerAdded) {
-        btn.addEventListener('click', () => {
-          modal.classList.add('active');
-        });
-        btn.dataset.listenerAdded = 'true';
-      }
-    });
-
-    if (closeButton && !closeButton.dataset.listenerAdded) {
-      closeButton.addEventListener('click', () => {
-        modal.classList.remove('active');
-      });
-      closeButton.dataset.listenerAdded = 'true';
-    }
-
-    // Також можна закривати при кліку на фон
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-      }
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupModal);
-  } else {
-    setupModal();
-  }
-
-  setTimeout(setupModal, 1000); // страховка
-</script>
-
 
   </body>
 </html>
